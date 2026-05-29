@@ -1,0 +1,67 @@
+.lib-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+}
+
+.lib-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+.lib-search-input::placeholder { color: var(--text-muted); }
+
+.lib-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.lib-tab {
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.lib-tab.active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.lib-tab:hover:not(.active) { background: var(--bg-elevated); color: var(--text-primary); }
+
+.track-dur {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 8px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+.empty-state p { font-size: 0.9rem; color: var(--text-secondary); }
+
+.name.playing { color: var(--accent-green); }
