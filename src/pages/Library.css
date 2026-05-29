@@ -2,10 +2,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--bg-elevated);
-  border-radius: var(--radius-full);
+  background: #1f1f1f;
+  border-radius: 500px;
   padding: 10px 16px;
-  border: 1px solid var(--border);
+  border: none;
+  box-shadow: rgb(18,18,18) 0px 1px 0px, rgb(124,124,124) 0px 0px 0px 1px inset;
+  transition: var(--transition);
+}
+.lib-search:focus-within {
+  box-shadow: rgb(18,18,18) 0px 1px 0px, var(--accent-green) 0px 0px 0px 1px inset;
 }
 
 .lib-search-input {
@@ -14,36 +19,43 @@
   border: none;
   outline: none;
   color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-family: inherit;
+  font-weight: 500;
 }
-.lib-search-input::placeholder { color: var(--text-muted); }
+.lib-search-input::placeholder { color: var(--text-secondary); }
 
 .lib-tabs {
   display: flex;
   gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
 }
+.lib-tabs::-webkit-scrollbar { display: none; }
 
 .lib-tab {
-  padding: 7px 16px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border-light);
-  background: transparent;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: none;
+  background: #1f1f1f;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
   font-family: inherit;
 }
 
 .lib-tab.active {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
+  background: #ffffff;
+  color: #121212;
 }
 
-.lib-tab:hover:not(.active) { background: var(--bg-elevated); color: var(--text-primary); }
+.lib-tab:hover:not(.active) {
+  background: #2a2a2a;
+  transform: scale(1.03);
+}
 
 .track-dur {
   font-size: 0.75rem;

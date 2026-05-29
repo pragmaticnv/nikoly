@@ -4,24 +4,24 @@
 
 :root {
   /* Colors */
-  --bg-primary: #000000;
+  --bg-primary: #121212;
   --bg-surface: #121212;
-  --bg-elevated: #1a1a1a;
-  --bg-card: #282828;
-  --bg-card-hover: #333333;
+  --bg-elevated: #181818;
+  --bg-card: #181818;
+  --bg-card-hover: #282828;
 
-  --accent-green: #1DB954;
-  --accent-purple: #9B59B6;
-  --accent-purple-2: #7D3C98;
-  --accent-gradient: linear-gradient(135deg, #9B59B6, #1DB954);
-  --accent-gradient-2: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  --accent-green: #1ed760;
+  --accent-purple: #1f1f1f;
+  --accent-purple-2: #252525;
+  --accent-gradient: linear-gradient(135deg, #2a2a2a, #121212);
+  --accent-gradient-2: linear-gradient(180deg, #1f1f1f 0%, #121212 100%);
 
   --text-primary: #FFFFFF;
   --text-secondary: #B3B3B3;
   --text-muted: #6B6B6B;
 
-  --border: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(255, 255, 255, 0.12);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.10);
 
   /* Spacing */
   --nav-height: 64px;
@@ -67,7 +67,7 @@ html, body {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'SpotifyMixUI', 'CircularSp', -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', helvetica, arial, sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
@@ -250,31 +250,46 @@ p, span { font-size: 0.875rem; }
   background: var(--accent-green);
   color: #000;
   border: none;
-  border-radius: var(--radius-full);
-  padding: 12px 24px;
+  border-radius: 500px;
+  padding: 12px 32px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: var(--transition);
+  transition: var(--transition-slow);
   display: flex;
   align-items: center;
   gap: 8px;
   justify-content: center;
 }
-.btn-primary:hover { opacity: 0.9; transform: scale(1.02); }
+.btn-primary:hover {
+  transform: scale(1.04);
+  background: #1fdf64;
+  box-shadow: 0 4px 12px rgba(30, 215, 96, 0.3);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
 
 .btn-outline {
   background: transparent;
   border: 1px solid var(--border-light);
   color: var(--text-primary);
-  border-radius: var(--radius-full);
-  padding: 10px 20px;
-  font-weight: 600;
-  font-size: 0.875rem;
+  border-radius: 9999px;
+  padding: 10px 24px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
   cursor: pointer;
   transition: var(--transition);
 }
-.btn-outline:hover { background: var(--bg-elevated); }
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-primary);
+  transform: scale(1.02);
+}
 
 /* === ALBUM ART GRADIENTS === */
 .art-1 { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
