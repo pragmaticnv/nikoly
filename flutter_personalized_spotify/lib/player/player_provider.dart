@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/track.dart';
 
@@ -86,7 +87,18 @@ class PlayerProvider extends ChangeNotifier {
     queueIndex = queue.indexWhere((t) => t.id == track.id).clamp(0, queue.length - 1);
     final url = track.url;
     if (url != null) {
-      await _audio.setUrl(url);
+      await _audio.setAudioSource(
+        AudioSource.uri(
+          Uri.parse(url),
+          tag: MediaItem(
+            id: track.id.toString(),
+            title: track.title,
+            artist: track.artist,
+            album: track.album,
+            artUri: track.coverUrl != null ? Uri.parse(track.coverUrl!) : null,
+          ),
+        ),
+      );
     } else {
       await _audio.setUrl(''); // placeholder
     }

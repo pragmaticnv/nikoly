@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'player/player_provider.dart';
 import 'widgets/bottom_nav.dart';
 import 'widgets/mini_player.dart';
@@ -12,6 +13,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await JustAudioBackground.init(
+    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
+    androidNotificationChannelName: 'Audio Playback',
+    androidNotificationOngoing: true,
+  );
   
   await Supabase.initialize(
     url: 'https://vggrimvjjzwmxvaqsbpb.supabase.co',
