@@ -87,6 +87,8 @@ function playerReducer(state, action) {
       return { ...state, userTracks: [action.track, ...state.userTracks] };
     case 'SET_USER_TRACKS':
       return { ...state, userTracks: action.tracks };
+    case 'CLEAR_TRACK':
+      return { ...state, currentTrack: null, isPlaying: false, progress: 0 };
     default:
       return state;
   }
@@ -202,6 +204,7 @@ export function PlayerProvider({ children }) {
   const toggleRepeat = useCallback(() => dispatch({ type: 'TOGGLE_REPEAT' }), []);
   const toggleLike = useCallback(() => dispatch({ type: 'TOGGLE_LIKE' }), []);
   const addUserTrack = useCallback((track) => dispatch({ type: 'ADD_USER_TRACK', track }), []);
+  const clearTrack = useCallback(() => dispatch({ type: 'CLEAR_TRACK' }), []);
 
   useEffect(() => {
     async function loadTracks() {
@@ -219,7 +222,7 @@ export function PlayerProvider({ children }) {
   }, []);
 
   return (
-    <PlayerContext.Provider value={{ ...state, playTrack, playQueue, togglePlay, next, prev, seek, toggleShuffle, toggleRepeat, toggleLike, addUserTrack }}>
+    <PlayerContext.Provider value={{ ...state, playTrack, playQueue, togglePlay, next, prev, seek, toggleShuffle, toggleRepeat, toggleLike, addUserTrack, clearTrack }}>
       {children}
     </PlayerContext.Provider>
   );

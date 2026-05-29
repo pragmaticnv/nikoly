@@ -4,10 +4,8 @@ import 'player/player_provider.dart';
 import 'widgets/bottom_nav.dart';
 import 'widgets/mini_player.dart';
 import 'screens/home_screen.dart';
+import 'screens/search_screen.dart';
 import 'screens/library_screen.dart';
-import 'screens/upload_screen.dart';
-import 'screens/insights_screen.dart';
-import 'screens/settings_screen.dart';
 import 'screens/now_playing_screen.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -65,10 +63,8 @@ class _RootScreenState extends State<RootScreen> {
 
   static final _pages = <Widget>[
     const HomeScreen(),
+    const SearchScreen(),
     const LibraryScreen(),
-    const UploadScreen(),
-    const InsightsScreen(),
-    const SettingsScreen(),
   ];
 
   void _onTabSelected(int index) {

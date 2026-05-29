@@ -115,12 +115,11 @@ p, span { font-size: 0.875rem; }
 .screen {
   flex: 1;
   overflow-y: auto;
-  padding-bottom: calc(var(--bottom-safe) + 16px);
   -webkit-overflow-scrolling: touch;
 }
 
 .screen-inner {
-  padding: 16px;
+  padding: 16px 16px calc(var(--bottom-safe) + 16px) 16px;
   display: flex;
   flex-direction: column;
   gap: 24px;

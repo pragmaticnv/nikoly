@@ -5,7 +5,7 @@ import './Upload.css';
 
 let nextId = 100;
 
-export default function Upload() {
+export default function Upload({ onNavigateTo }) {
   const { addUserTrack, playTrack } = usePlayer();
   const [dragActive, setDragActive] = useState(false);
   const [uploaded, setUploaded] = useState([]);
@@ -76,6 +76,9 @@ export default function Upload() {
   return (
     <div className="screen">
       <header className="top-bar">
+        <button className="icon-btn" onClick={() => onNavigateTo?.('library')} aria-label="Go back" style={{ marginRight: '12px' }}>
+          <span className="material-icons-round">arrow_back</span>
+        </button>
         <h1 style={{fontSize:'1.3rem'}}>Upload Music</h1>
       </header>
 

@@ -10,7 +10,7 @@ const THEMES = [
 
 const QUALITY_OPTIONS = ['Auto', 'Low (96kbps)', 'Normal (160kbps)', 'High (320kbps)', 'Lossless'];
 
-export default function Settings() {
+export default function Settings({ onNavigateTo }) {
   const [theme, setTheme] = useState('dark');
   const [quality, setQuality] = useState('High (320kbps)');
   const [crossfade, setCrossfade] = useState(3);
@@ -41,6 +41,9 @@ export default function Settings() {
   return (
     <div className="screen">
       <header className="top-bar">
+        <button className="icon-btn" onClick={() => onNavigateTo?.('library')} aria-label="Go back" style={{ marginRight: '12px' }}>
+          <span className="material-icons-round">arrow_back</span>
+        </button>
         <h1 style={{fontSize:'1.3rem'}}>Settings</h1>
       </header>
 

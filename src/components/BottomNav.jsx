@@ -2,10 +2,8 @@ import './BottomNav.css';
 
 const NAV_ITEMS = [
   { id: 'home',     icon: 'home',          label: 'Home' },
-  { id: 'library',  icon: 'library_music', label: 'Library' },
-  { id: 'upload',   icon: 'add_circle',    label: 'Upload' },
-  { id: 'insights', icon: 'bar_chart',     label: 'Insights' },
-  { id: 'settings', icon: 'settings',      label: 'Settings' },
+  { id: 'search',   icon: 'search',        label: 'Search' },
+  { id: 'library',  icon: 'library_music', label: 'Your Library' },
 ];
 
 export default function BottomNav({ active = 'home', onChange }) {

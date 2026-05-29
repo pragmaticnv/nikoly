@@ -25,7 +25,7 @@ const MOODS = [
   { mood: '💪 Focus', pct: 16 },
 ];
 
-export default function Insights() {
+export default function Insights({ onNavigateTo }) {
   const { currentTrack } = usePlayer();
   const totalHrs = WEEKLY_HOURS.reduce((s,v)=>s+v,0).toFixed(1);
   const avgDay = (totalHrs / 7).toFixed(1);
@@ -33,7 +33,10 @@ export default function Insights() {
   return (
     <div className="screen">
       <header className="top-bar">
-        <h1 style={{fontSize:'1.3rem'}}>Your Insights</h1>
+        <button className="icon-btn" onClick={() => onNavigateTo?.('home')} aria-label="Go back" style={{ marginRight: '12px' }}>
+          <span className="material-icons-round">arrow_back</span>
+        </button>
+        <h1 style={{fontSize:'1.3rem', flex: 1}}>Your Insights</h1>
         <span className="badge badge-green">This Week</span>
       </header>
 

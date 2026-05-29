@@ -23,10 +23,8 @@ class BottomNav extends StatelessWidget {
       showUnselectedLabels: true,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.library_music), label: 'Library'),
-        BottomNavigationBarItem(icon: Icon(Icons.cloud_upload), label: 'Upload'),
-        BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Insights'),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+        BottomNavigationBarItem(icon: Icon(Icons.library_music), label: 'Your Library'),
       ],
     );
   }
