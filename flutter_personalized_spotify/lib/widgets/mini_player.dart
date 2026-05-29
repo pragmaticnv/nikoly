@@ -23,7 +23,7 @@ class MiniPlayer extends StatelessWidget {
     return GestureDetector(
       onTap: onOpenNowPlaying,
       child: Container(
-        color: const Color(0xFF161626),
+        color: const Color(0xFF1F1F1F), // Premium elevated grey surface matching DESIGN.md
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         child: Row(
           children: [
@@ -32,17 +32,30 @@ class MiniPlayer extends StatelessWidget {
               height: 44,
               decoration: BoxDecoration(
                 color: Colors.white12,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(8),
+                image: track.coverUrl != null
+                    ? DecorationImage(image: NetworkImage(track.coverUrl!), fit: BoxFit.cover)
+                    : null,
               ),
-              child: const Icon(Icons.music_note, color: Colors.white54),
+              child: track.coverUrl == null ? const Icon(Icons.music_note, color: Colors.white54) : null,
             ),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(track.title, style: const TextStyle(fontWeight: FontWeight.w600)),
-                  Text(track.artist, style: const TextStyle(fontSize: 12, color: Colors.white70)),
+                  Text(
+                    track.title,
+                    style: const TextStyle(fontWeight: FontWeight.w600),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    track.artist,
+                    style: const TextStyle(fontSize: 12, color: Colors.white70),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
               ),
             ),
@@ -51,6 +64,10 @@ class MiniPlayer extends StatelessWidget {
             IconButton(
               onPressed: player.togglePlay,
               icon: Icon(player.isPlaying ? Icons.pause : Icons.play_arrow),
+            ),
+            IconButton(
+              onPressed: player.clearTrack,
+              icon: const Icon(Icons.close, color: Colors.white54, size: 20),
             ),
           ],
         ),

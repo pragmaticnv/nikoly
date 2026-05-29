@@ -43,8 +43,9 @@ class PlayerProvider extends ChangeNotifier {
   bool isLiked = false;
   double progress = 0.0;
   List<Track> userTracks = [];
+  Track? _currentTrack;
 
-  Track? get currentTrack => queue.isEmpty ? null : queue[queueIndex];
+  Track? get currentTrack => _currentTrack;
   bool get isPlaying => _audio.playing;
 
   PlayerProvider() {
@@ -80,6 +81,7 @@ class PlayerProvider extends ChangeNotifier {
   }
 
   Future<void> playTrack(Track track, [List<Track>? playlist]) async {
+    _currentTrack = track;
     if (playlist != null) queue = playlist;
     queueIndex = queue.indexWhere((t) => t.id == track.id).clamp(0, queue.length - 1);
     final url = track.url;
@@ -139,13 +141,21 @@ class PlayerProvider extends ChangeNotifier {
     } else {
       queueIndex = (queueIndex + 1) % queue.length;
     }
+    _currentTrack = queue[queueIndex];
     playTrack(queue[queueIndex], queue);
   }
 
   void prev() {
     if (queue.isEmpty) return;
     queueIndex = (queueIndex - 1 + queue.length) % queue.length;
+    _currentTrack = queue[queueIndex];
     playTrack(queue[queueIndex], queue);
+  }
+
+  void clearTrack() {
+    _currentTrack = null;
+    _audio.stop();
+    notifyListeners();
   }
 
   void _handleTrackEnd() {
